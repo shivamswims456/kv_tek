@@ -52,6 +52,8 @@
 		</div>
 	</div>
 
+	{% csrf_token %}
+
 	<!-- core:js -->
 	<script src="/static/assets/vendors/core/core.js"></script>
 	<!-- endinject -->
@@ -62,6 +64,18 @@
 	<!-- inject:js -->
 	<script src="/static/assets/vendors/feather-icons/feather.min.js"></script>
 	<script src="/static/assets/js/template.js"></script>
+	<script>
+		console.log("good");
+	</script>
+	<script type="module">
+		import { handel_login } from "/static/actions/js/authenticate.js"
+		
+		const hl = new handel_login();
+
+		hl.inititate_handel_login();
+
+	</script>
+	
 	<!-- endinject -->
 
 	<!-- Custom js for this page -->
