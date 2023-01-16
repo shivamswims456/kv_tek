@@ -4,8 +4,11 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from django_sso.sso_gateway.models import Service, AuthenticationRequest
-
+from django_sso.exceptions import SSOException
+from django.http import JsonResponse
 # Create your views here.
+
+
 
 
 class login_web(View):
@@ -17,37 +20,49 @@ class login_web(View):
 
             return redirect(self.get_success_url())
 
-
         return super().dispatch(request, *args, **kwargs)
+
+
+
         
-
     def get_success_url(self):
-
+        
         sso_request_token = self.request.GET.get('sso', '').strip()
-
         auth_request = None
 
         if sso_request_token:
             auth_request = AuthenticationRequest.objects.filter(
-                token=sso_request_token,
-                used = False
-            ).first()
+				token=sso_request_token,
+				used=False,
+			).first()
 
-        
-        if not auth_request or auth_request.next_url:
 
+
+        if not auth_request or not auth_request.next_url:
+            
             return reverse_lazy('welcome')
+        
 
         try:
 
             auth_request.activate(self.request.user)
 
-        except Exception as e:
+        except SSOException as e:
 
-            return reverse_lazy('welcome') + '?fallback=true'
+            return reverse_lazy('welcome')
+
 
 
         return f'{auth_request.service.base_url}/sso/accept/'
+
+	
+
+
+    
+
+    def post(self, request):
+
+        return JsonResponse({'good_man':self.get_success_url()})
 
 
 

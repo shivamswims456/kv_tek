@@ -19,9 +19,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
-    path('sso/', include('django_sso.sso_gateway.urls')),
-
+    path('', include('django_sso.sso_gateway.urls')),
     path('auth/', include('authenticate.urls')),
     
     path('accounts/', include('allauth.urls')),

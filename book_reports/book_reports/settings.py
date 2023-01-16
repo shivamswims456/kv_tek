@@ -133,10 +133,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'
 
 # Specify SSO server base url
-SSO_ROOT = 'http://localhost:8000/sso/'
+SSO_ROOT = 'http://127.0.0.1:8000/'
 
 # Specify application token obtained in SSO server in the admin panel
-SSO_TOKEN = '16WCCg23Mq2zBkujlJoiSffSUGvh5Ywj5EieQ6YRHM0f0hMfZSdmrOgd5XP5bW3KYebA7j7mRyyaMOnki2utaSPNrbQ7TZGv75QTPfqTe8iu6ySkMAquekk7CIAZSqqf'
+SSO_TOKEN = 'YfhNVjQ3nWxoAgiPLMoNIpnQsI1e1NRpg9Ni8d3IfpGTmRnH11Cprm39M5ojjbWH2mBHMjPLdzDY8J84pkla30Y8ALqzDa7fy9TRKThicyphZxYpsDQBtU2SBWoiFOXU'
 
 # Overriding event acceptor class (OPTIONAL). For more details read "Overriding event acceptor in subordinated service" partition
 #SSO_EVENT_ACCEPTOR_CLASS = 'project.my_overrides.MySSOEventAcceptor'

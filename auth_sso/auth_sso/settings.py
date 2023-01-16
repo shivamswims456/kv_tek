@@ -140,10 +140,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-SSO_PRIVATE_KEY = 'Your Private Key'
-SSO_PUBLIC_KEY = 'Your Public Key'
-SSO_SERVER = 'SSO SERVER URL'
-
 
 AUTHENTICATION_BACKENDS = [
     
